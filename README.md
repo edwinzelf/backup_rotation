@@ -11,8 +11,8 @@ Make the remote host use this key, by running:
 _ssh-copy-id [remotehost]_
 
 
-### Edit the variables in both .sh files:
-#### backup.sh
+## Edit the variables in both .sh files:
+### backup.sh
 __storage=[location of the backupfolder]__
 
 _example: storage=/home/homeassistant/backups_
@@ -21,7 +21,7 @@ __rsync=[ssh string with host and location]__
 
 _example: rsync='admin@x.x.x.x:/volume1/sys/rsync/Backups/hassbian/'_
 
-#### daily_bakup.sh
+### daily_bakup.sh
 __BACKUP_DIR=[location of the backupfolder]__
 
 _example: BACKUP_DIR=/home/homeassistant/backups_
