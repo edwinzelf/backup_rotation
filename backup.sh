@@ -13,13 +13,13 @@ source=$storage/incoming
 rsync='admin@192.168.32.9:/volume1/sys/rsync/Backups/hassbian/'
 
 # Destination file names
-date_daily=`date +"%d-%m-%Y"`
+date_daily=(date +"%d-%m-%Y")
 #date_weekly=`date +"%V sav. %m-%Y"`
 #date_monthly=`date +"%m-%Y"`
 
 # Get current month and week day number
-month_day=`date +"%d"`
-week_day=`date +"%u"`
+month_day=(date +"%d")
+week_day=(date +"%u")
 
 # Optional check if source files exist. Email if failed.
 # if [ ! -f $source/archive.tgz ]; then
@@ -43,8 +43,8 @@ else
 fi
 
 # Move the files
-mkdir $destination
-mv -v $source/* $destination
+mkdir "$destination"
+mv -v "$source/* $destination"
 
 # daily - keep for 14 days
 find $storage/backup.daily/ -maxdepth 1 -mtime +14 -type d -exec rm -rv {} \;
@@ -56,4 +56,3 @@ find $storage/backup.weekly/ -maxdepth 1 -mtime +60 -type d -exec rm -rv {} \;
 find $storage/backup.monthly/ -maxdepth 1 -mtime +300 -type d -exec rm -rv {} \;
 
 rsync -azP --delete $storage $rsync
-
